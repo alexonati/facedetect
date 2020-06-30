@@ -12,10 +12,10 @@ const image = require('./controllers/image');
 const db = knex({
   client: 'pg',
   connection: {
-    host : 'ec2-54-247-118-139.eu-west-1.compute.amazonaws.com',
-    user : 'omzqmokwdvnsax',
-    password : '23102949e375451453a38f3b6384fea6e93e027225083498f9b0a24c2b08166d',
-    database : 'd6jc80fiqbvev9'
+    host : 'postgres://adnhrwmttewcey:2217b1af0ddd25f79f4e02fbcefdb08077c34eff2dea1f22e9d595141d2e7528@ec2-34-192-173-173.compute-1.amazonaws.com:5432/d20ifastbhcq8',
+    user : 'adnhrwmttewcey',
+    password : '2217b1af0ddd25f79f4e02fbcefdb08077c34eff2dea1f22e9d595141d2e7528',
+    database : 'd20ifastbhcq8'
   }
 });
 
@@ -24,7 +24,7 @@ const app = express();
 app.use(cors())
 app.use(bodyParser.json());
 
-app.get('/', (req, res)=> { res.send(db.users) })
+app.get('/', (req, res)=> { res.send('it is working') })
 app.post('/signin', signin.handleSignin(db, bcrypt))
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) })
 app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db)})
